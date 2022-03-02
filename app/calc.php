@@ -7,17 +7,14 @@ $lata = $_REQUEST ['lata'];
 $opr = $_REQUEST ['opr'];
 
 
-if (empty($messages)) {
-	
+// nie potrzebna jest walidacja czy zostały uzupełnione pola ze wzglądu na atrybut 'required' w znacznikach input
 	if (!is_numeric($kwota)) {
 		$messages [] = 'Kwota musi być liczbą';
 	}
 	
 	if (!is_numeric($lata)) {
-		$messages [] = 'Ilość lat mus być liczbą';
+		$messages [] = 'Ilość lat musi być liczbą';
 	}	
-
-}
 
 if (empty($messages)) { 
 
