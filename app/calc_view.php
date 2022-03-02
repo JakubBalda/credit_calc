@@ -8,9 +8,9 @@
 
 <form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
 	<label for="id_kwota">Kwota: </label>
-    <input type="text" id="id_kwota" name="kwota" required/><br />
+    <input type="text" id="id_kwota" name="kwota" required value="<?php if(isset($kwota)) print($kwota);?>"/><br />
     <label for="id_lata">Lata: </label>
-    <input type="text" id="id_lata" name="lata" required/><br />
+    <input type="text" id="id_lata" name="lata" required value="<?php if(isset($lata)) print($lata);?>"/><br />
     <label for="id_opr">Oprocentowanie: </label>
     <select name="opr">
         <option value="0">0%</option>
