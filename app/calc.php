@@ -7,7 +7,6 @@ $lata = $_REQUEST ['lata'];
 $opr = $_REQUEST ['opr'];
 
 
-
 if (empty($messages)) {
 	
 	if (!is_numeric($kwota)) {
