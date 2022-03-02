@@ -24,10 +24,10 @@
 
 <?php
 if (isset($messages)) {
-	if (count ( $messages ) > 0) {
+	if (count($messages) > 0) {
 		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px; color: #fff; background-color: #860500; width:300px;">';
         echo 'Błędnie uzupełniony formularz!!! <br />';
-		foreach ( $messages as $key => $msg ) {
+		foreach ($messages as $key => $msg) {
 			echo '<li>'.$msg.'</li>';
 		}
 		echo '</ol>';
