@@ -21,7 +21,7 @@
     </select><br />
 	<input type="submit" value="Oblicz" />
 </form>	
-
+<a href="<?php print(_APP_ROOT);?>/app/security/logout.php">Wyloguj się</a>
 <?php
 if (isset($messages)) {
 	if (count($messages) > 0) {

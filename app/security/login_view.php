@@ -5,7 +5,7 @@
         <title>Logownanie</title>
     </head>
     <body>
-        <form action="<?php print(_APP_ROOT);?> /app/security/loginh.php" method="post">
+        <form action="<?php print(_APP_ROOT);?> /app/security/login.php" method="post">
         <legend>Logowanie</legend>
         <fieldset>
             <label for="id_login">Login: </label>

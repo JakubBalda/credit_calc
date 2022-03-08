@@ -3,13 +3,16 @@ require_once dirname(__FILE__).'/../../config.php';
 
 function getLoginParams(&$form)
 {
+    
     $form['login'] = isset($_REQUEST['login']) ? $_REQUEST['login'] : null;
     $form['password'] = isset($_REQUEST['password']) ? $_REQUEST['password'] : null;
+    
 }
-function validParams(&$form, $messeges)
+function validLogin(&$form, &$messeges)
 {
     if(!(isset($form['login']) && isset($form['password'])))
     {
+        
         return false;
     } 
     
@@ -18,11 +21,12 @@ function validParams(&$form, $messeges)
     if ($form['password'] == "")
         $messeges[] = "Nie podano hasła";
 
-    if ($messeges >0) 
+    if (count($messeges) >0) 
         return false;
     
     if($form['login'] == "jakub" && $form['password'] == "baldzik123")
     {
+        
         session_start();
         $_SESSION['role'] = 'admin';
         return true;
@@ -45,9 +49,13 @@ $messeges = array();
 
 getLoginParams($form);
 
-if(!validParams($form, $messeges))
+if(!validLogin($form, $messeges))
 {
     include _ROOT_PATH.'/app/security/login_view.php';
+}else
+{
+    
+    header("Location: "._APP_URL);
 }
 
 ?>
