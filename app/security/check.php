@@ -7,7 +7,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : ' ';
 
 if(empty($role))
 {
-    include dirname(__FILE__).'/login.php';
+    include _ROOT_PATH.'/app/security/login.php';
     exit();
 }
 

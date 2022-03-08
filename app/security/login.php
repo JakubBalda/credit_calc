@@ -47,7 +47,7 @@ getLoginParams($form);
 
 if(!validParams($form, $messeges))
 {
-    include _ROOT_PATH.'/xampp/htdocs/credit_calc/app/security/login_view.php';
+    include _ROOT_PATH.'/app/security/login_view.php';
 }
 
 ?>
