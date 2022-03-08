@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<html lang="pl">
 <head>
 <meta charset="utf-8" />
 <title>Kalkulator kredytowy</title>
@@ -24,19 +24,20 @@
 
 <?php
 if (isset($messages)) {
-	if (count ( $messages ) > 0) {
-		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px;  background-color: #b85699; width:300px;">';
-		foreach ( $messages as $key => $msg ) {
+	if (count($messages) > 0) {
+		echo '<ul style="margin: 20px; padding: 10px 10px 10px 30px; color: #fff; background-color: #860500; width:300px;">';
+        echo 'Błędnie uzupełniony formularz!!! <br />';
+		foreach ($messages as $key => $msg) {
 			echo '<li>'.$msg.'</li>';
 		}
-		echo '</ol>';
+		echo '</ul>';
 	}
 }
 ?>
 
 <?php if (isset($rate)){ ?>
 <div style="margin: 20px; padding: 10px;  background-color: #021548;color: white; width:300px;">
-<?php echo 'Wynik: '.$rate; ?>
+<?php echo 'Miesięczna rata: '.round($rate, 2).' zł'; ?>
 </div>
 <?php } ?>
 
