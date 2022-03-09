@@ -15,6 +15,15 @@
             </fieldset>
             <input type="submit" value="Zaloguj"/>
         </form>
+
+
+        <?php
+            foreach($messeges as $key => $mes)
+            {
+                print($mes.'</br>');
+            }
+
+        ?>
     </body>
 
 

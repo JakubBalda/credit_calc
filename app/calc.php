@@ -11,26 +11,32 @@ function getParams(&$kwota, &$lata, &$opr)
 }
 function validParams(&$kwota,&$lata, &$opr,&$messages)
 {
+	
 	if (!(isset($kwota) && isset($lata) && isset($opr)))
 		return false;
 
 	if (!is_numeric($kwota)) {
 		$messages [] = 'Kwota musi być liczbą!';
+		return false;
 	}
 	
 	if (!is_numeric($lata)) {
 		$messages [] = 'Ilość lat musi być liczbą!';
+		return false;
 	}
 	if($lata <= 0)
 	{
 		$messages [] = 'Błędna liczba lat!';
+		return false;
 	}
 	if($kwota <=0)
 	{
 		$messages [] = 'Błędne podana kwota';
-	}	
+		return false;
+	}
+	return true;	
 }
-function calculate(&$kwota,&$lata,&$opr)
+function calculate(&$kwota,&$lata,&$opr,&$rate)
 {
 	
 	$kwota = floatval($kwota);
@@ -52,5 +58,8 @@ $rate = null;
 
 getParams($kwota,$lata,$opr);
 if(validParams($kwota, $lata, $opr, $messages))
+{
+	
 	calculate($kwota,$lata,$opr,$rate);
+}
 include 'calc_view.php';
