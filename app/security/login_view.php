@@ -34,7 +34,7 @@
                 <?php
                     foreach($messeges as $key => $mes)
                     {
-                        print($mes.'</br>');
+                        print('<span class="errorMessage">'.$mes.'</span>');
                     }
                 ?>
                 </div>

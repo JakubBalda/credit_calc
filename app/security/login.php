@@ -19,7 +19,7 @@ function validLogin(&$form, &$messeges)
     if ($form['login'] == "")
         $messeges[] = "Nie podano loginu!";
     if ($form['password'] == "")
-        $messeges[] = "Nie podano hasła";
+        $messeges[] = "Nie podano hasła!";
 
     if (count($messeges) >0) 
         return false;
