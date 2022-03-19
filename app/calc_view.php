@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Kalkulator kredytowy</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" /> 
+    <link rel="stylesheet" href="<?php print(_APP_ROOT);?>/css/style.css" type="text/css" /> 
 </head>
 <body>
 
@@ -44,7 +44,6 @@
                     <?php
                     if (isset($messages)) {
                         if (count($messages) > 0) {
-                            echo '<ul style="margin: 20px; padding: 10px 10px 10px 30px; color: #fff; background-color: #860500; width:300px;">';
                             echo 'Błędnie uzupełniony formularz!!! <br />';
                             foreach ($messages as $key => $msg) {
                                 echo '<li>'.$msg.'</li>';
@@ -52,16 +51,14 @@
                             echo '</ul>';
                         }
                     }
+
+                    if (isset($rate)){
+                        print('Miesięczna rata: '.round($rate, 2).' zł');
+                    }
                     ?>
                 </div>
             </div>
         </div>
-
-        <?php if (isset($rate)){ ?>
-        <div style="margin: 20px; padding: 10px;  background-color: #021548;color: white; width:300px;">
-        <?php echo 'Miesięczna rata: '.round($rate, 2).' zł'; ?>
-        </div>
-        <?php } ?>
     </div>
     <a href="<?php print(_APP_ROOT);?>/app/security/logout.php" class="logout_button">Wyloguj się</a>
 </body>
