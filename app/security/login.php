@@ -51,11 +51,11 @@ getLoginParams($form);
 
 if(!validLogin($form, $messeges))
 {
-    include _ROOT_PATH.'/app/security/login_view.php';
+    include $conf->root_path.'/app/security/login_view.php';
 }else
 {
     
-    header("Location: "._APP_URL);
+    header("Location: ".$conf->app_url);
 }
 
 ?>

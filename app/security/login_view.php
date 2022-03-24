@@ -4,13 +4,13 @@
         <meta charset="utf-8" />
         <title>Logownanie</title>
 
-        <link rel="stylesheet" type="text/css" href="<?php print(_APP_ROOT); ?> /css/style.css" />
-        <script src="<?php print(_APP_ROOT); ?>/js/login_script.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php print($conf->app_root); ?> /css/style.css" />
+        <script src="<?php print($conf->app_root); ?>/js/login_script.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="container" id="container" >
             <div class="form-container sign-in-container">
-                <form action="<?php print(_APP_ROOT);?> /app/security/login.php" method="post" class="form" id="login">
+                <form action="<?php print($conf->app_root);?> /app/security/login.php" method="post" class="form" id="login">
                 <h1 class="form__title">Logowanie</h1>
                 <fieldset>
                     <div class="form__title-group">

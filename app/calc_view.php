@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Kalkulator kredytowy</title>
-    <link rel="stylesheet" href="<?php print(_APP_ROOT);?>/css/style.css" type="text/css" /> 
+    <link rel="stylesheet" href="<?php print($conf->app_root);?>/css/style.css" type="text/css" /> 
 </head>
 <body>
 
     <div class="container" id="container" >
         <div class="form-container sign-in-container">
 
-            <form action="<?php print(_APP_URL);?>/app/calc.php" method="post" class="form" id="login">
+            <form action="<?php print($conf->app_url);?>/app/calc.php" method="post" class="form" id="login">
                 <h1 class="form__title">Kalkulator kredytowy</h1>
                 <fieldset>
                     <div class="form__title-group">
@@ -60,6 +60,6 @@
             </div>
         </div>
     </div>
-    <a href="<?php print(_APP_ROOT);?>/app/security/logout.php" class="logout_button">Wyloguj się</a>
+    <a href="<?php print($conf->app_root);?>/app/security/logout.php" class="logout_button">Wyloguj się</a>
 </body>
 </html>
