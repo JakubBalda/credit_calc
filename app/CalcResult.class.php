@@ -1,5 +1,5 @@
 <?php
-class CalcForm{
+class CalcResult{
     public $result;
 }
 ?>

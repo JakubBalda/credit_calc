@@ -15,11 +15,11 @@
                 <fieldset>
                     <div class="form__title-group">
                         <label for="id_kwota">Kwota: </label>
-                        <input type="text" id="id_kwota" name="kwota" required value="<?php if(isset($kwota)) print($kwota);?>"/>
+                        <input type="text" id="id_kwota" name="kwota" required value="<?php if(isset($this->form->kwota)) print($this->form->kwota);?>"/>
                     </div>
                     <div class="form__title-group">
                         <label for="id_lata">Lata: </label>
-                        <input type="text" id="id_lata" name="lata" required value="<?php if(isset($lata)) print($lata);?>"/>
+                        <input type="text" id="id_lata" name="lata" required value="<?php if(isset($this->form->lata)) print($this->form->lata);?>"/>
                     </div>
                     <div class="form__title-group">
                         <label for="id_opr">Oprocentowanie: </label>
@@ -42,7 +42,7 @@
             <div class="overlay-calc">
                 <div class="overlay-panel overlay-right">
                     <?php
-                    if (isset($messages)) {
+                    if (!$this->msgs->isError()) {
                         if (count($messages) > 0) {
                             echo 'Błędnie uzupełniony formularz!!! <br />';
                             foreach ($messages as $key => $msg) {
@@ -53,7 +53,8 @@
                     }
 
                     if (isset($rate)){
-                        print('Miesięczna rata: '.round($rate, 2).' zł');
+                        print('Miesięczna rata: '
+                            .round($this->result->result, 2).' zł');
                     }
                     ?>
                 </div>
