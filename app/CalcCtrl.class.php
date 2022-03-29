@@ -1,5 +1,5 @@
 <?php
-
+require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
 require_once $conf->root_path.'/lib/Messeges.class.php';
 require_once $conf->root_path.'/app/CalcForm.class.php';
 require_once $conf->root_path.'/app/CalcResult.class.php';
@@ -73,8 +73,25 @@ class CalcCtrl{
             }
         }
 
-        include 'calc_view.php';
+        $this->generateView();
     }
+
+    public function generateView(){
+		global $conf;
+		
+		$smarty = new Smarty();
+		$smarty->assign('conf',$conf);
+		
+		$smarty->assign('page_title','Kalkulator kredytowy');
+		//$smarty->assign('page_description','Obiektowość. Funkcjonalność aplikacji zamknięta w metodach różnych obiektów. Pełen model MVC.');
+		//$smarty->assign('page_header','Obiekty w PHP');
+				
+		$smarty->assign('msgs',$this->msgs);
+		$smarty->assign('form',$this->form);
+		$smarty->assign('res',$this->result);
+		
+		$smarty->display($conf->root_path.'/app/CalcView.html');
+	}
 }
 
 ?>
