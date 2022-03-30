@@ -1,18 +1,18 @@
 <?php
-require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
-require_once $conf->root_path.'/lib/Messeges.class.php';
+require_once $conf->root_path.'/libs/smarty/Smarty.class.php';
+require_once $conf->root_path.'/libs/Messeges.class.php';
 require_once $conf->root_path.'/app/CalcForm.class.php';
-require_once $conf->root_path.'/app/CalcResult.class.php';
+require_once $conf->root_path.'/app/CalcRate.class.php';
 
 class CalcCtrl{
 
     private $msgs;
     private $form;
-    private $result;
+    private $rate;
 
     public function __construct(){
         $this->form = new CalcForm();
-        $this->result = new CalcResult();
+        $this->rate = new CalcRate();
         $this->msgs = new Messeges();
     }
 
@@ -42,6 +42,7 @@ class CalcCtrl{
             
             if (!is_numeric($this->form->lata)) {
                 $this->msgs->addError('Lata muszą być liczbą!!!');
+                
             }
             if($this->form->lata <= 0){
                 $this->msgs->addError('Lata nie mogą być liczbą ujemną!!!');
@@ -49,8 +50,9 @@ class CalcCtrl{
             if($this->form->kwota <=0){
                 $this->msgs->addError('Kwota nie może być liczbą ujemną!!!');
             }
-            return $this->msgs->isError();
+            return !$this->msgs->isError();
             }
+            
         }
 
     public function process(){
@@ -60,15 +62,14 @@ class CalcCtrl{
         if($this->validate()){
             $this->form->kwota = floatval($this->form->kwota);
 			$this->form->lata = intval($this->form->lata);
-            $this->form->opr = intval($$this->form->opr);
 
             if($this->form->opr != 0){
-		        $this->result->result = ($this->form->kwota + 
+		        $this->rate->creditRate = ($this->form->kwota + 
                     ($this->form->kwota *($this->form->opr/100)))
                         /($this->form->lata*12);
             }
             else{
-                $this->result->result = $this->form->kwota
+                $this->rate->creditRate = $this->form->kwota
                     /($this->form->lata*12);
             }
         }
@@ -80,17 +81,19 @@ class CalcCtrl{
 		global $conf;
 		
 		$smarty = new Smarty();
-		$smarty->assign('conf',$conf);
-		
-		$smarty->assign('page_title','Kalkulator kredytowy');
-		//$smarty->assign('page_description','Obiektowość. Funkcjonalność aplikacji zamknięta w metodach różnych obiektów. Pełen model MVC.');
-		//$smarty->assign('page_header','Obiekty w PHP');
-				
-		$smarty->assign('msgs',$this->msgs);
-		$smarty->assign('form',$this->form);
-		$smarty->assign('res',$this->result);
-		
-		$smarty->display($conf->root_path.'/app/CalcView.html');
+
+        $smarty->assign('app_url',$conf->app_url);
+        $smarty->assign('app_root', $conf->app_root);
+        $smarty->assign('root_path',$conf->root_path);
+        $smarty->assign('page_title','Kalkulator kredytowy');
+
+
+        $smarty->assign('form',$this->form);
+        $smarty->assign('rate',$this->rate);
+        $smarty->assign('msgs', $this->msgs);
+
+
+        $smarty->display($conf->root_path.'/app/CalcView.html');
 	}
 }
 
