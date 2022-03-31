@@ -1,4 +1,4 @@
-{extends file="../templates/main.html"}
+{extends file=$conf->root_path|cat:"/templates/main.html"}
 
 {block name=footer}przykładowa tresć stopki wpisana do szablonu głównego z szablonu kalkulatora{/block}
 
@@ -7,16 +7,16 @@
     <div class="container" id="container" >
         <div class="form-container sign-in-container">
 
-            <form action="{$app_url}/app/calc.php" method="post" class="form" id="login">
+            <form action="{$conf->action_root}calculated" method="post" class="form" id="login">
                 <h1 class="form__title">Kalkulator kredytowy</h1>
                 <fieldset>
                     <div class="form__title-group">
                         <label for="id_kwota">Kwota: </label>
-                        <input type="text" id="id_kwota" name="kwota" required value="{$form->kwota}"/>
+                        <input type="text" id="id_kwota" name="kwota" placeholder="Kwota" required value="{$form->kwota}"/>
                     </div>
                     <div class="form__title-group">
                         <label for="id_lata">Lata: </label>
-                        <input type="text" id="id_lata" name="lata" required value="{$form->lata}"/>
+                        <input type="text" id="id_lata" name="lata" required placeholder="Lata" value="{$form->lata}"/>
                     </div>
                     <div class="form__title-group">
                         <label for="id_opr">Oprocentowanie: </label>

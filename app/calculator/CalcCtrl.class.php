@@ -1,8 +1,8 @@
 <?php
 require_once $conf->root_path.'/libs/smarty/Smarty.class.php';
 require_once $conf->root_path.'/libs/Messeges.class.php';
-require_once $conf->root_path.'/app/CalcForm.class.php';
-require_once $conf->root_path.'/app/CalcRate.class.php';
+require_once $conf->root_path.'/app/calculator/CalcForm.class.php';
+require_once $conf->root_path.'/app/calculator/CalcRate.class.php';
 
 class CalcCtrl{
 
@@ -25,7 +25,7 @@ class CalcCtrl{
 
     public function validate(){
         if (!(isset($this->form->kwota) && isset($this->form->lata) && isset($this->form->opr)))
-		return false;
+		    return false;
 
         if($this->form->kwota == ""){
             $this->msgs->addError('Nie podano kwoty!!!');
@@ -81,6 +81,7 @@ class CalcCtrl{
 		global $conf;
 		
 		$smarty = new Smarty();
+        $smarty->assign('conf', $conf);
 
         $smarty->assign('app_url',$conf->app_url);
         $smarty->assign('app_root', $conf->app_root);
@@ -93,7 +94,7 @@ class CalcCtrl{
         $smarty->assign('msgs', $this->msgs);
 
 
-        $smarty->display($conf->root_path.'/app/CalcView.html');
+        $smarty->display($conf->root_path.'/app/calculator/CalcView.html');
 	}
 }
 
