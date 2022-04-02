@@ -1,5 +1,5 @@
 <?php 
-require_once dirname(__FILE__).'/../../config.php';
+require_once dirname(__FILE__).'/../../init.php';
 
 function getLoginParams(&$form)
 {
@@ -51,6 +51,7 @@ getLoginParams($form);
 
 if(!validLogin($form, $messeges))
 {
+    
     include $conf->root_path.'/app/security/login_view.php';
 }else
 {

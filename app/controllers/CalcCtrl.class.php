@@ -1,8 +1,6 @@
 <?php
-require_once $conf->root_path.'/libs/smarty/Smarty.class.php';
-require_once $conf->root_path.'/libs/Messeges.class.php';
-require_once $conf->root_path.'/app/calculator/CalcForm.class.php';
-require_once $conf->root_path.'/app/calculator/CalcRate.class.php';
+require_once 'CalcForm.class.php';
+require_once 'CalcRate.class.php';
 
 class CalcCtrl{
 
@@ -80,21 +78,20 @@ class CalcCtrl{
     public function generateView(){
 		global $conf;
 		
-		$smarty = new Smarty();
-        $smarty->assign('conf', $conf);
+        getSmarty()->assign('conf', $conf);
 
-        $smarty->assign('app_url',$conf->app_url);
-        $smarty->assign('app_root', $conf->app_root);
-        $smarty->assign('root_path',$conf->root_path);
-        $smarty->assign('page_title','Kalkulator kredytowy');
-
-
-        $smarty->assign('form',$this->form);
-        $smarty->assign('rate',$this->rate);
-        $smarty->assign('msgs', $this->msgs);
+        getSmarty()->assign('app_url',$conf->app_url);
+        getSmarty()->assign('app_root', $conf->app_root);
+        getSmarty()->assign('root_path',$conf->root_path);
+        getSmarty()->assign('page_title','Kalkulator kredytowy');
 
 
-        $smarty->display($conf->root_path.'/app/calculator/CalcView.html');
+        getSmarty()->assign('form',$this->form);
+        getSmarty()->assign('rate',$this->rate);
+        getSmarty()->assign('msgs', $this->msgs);
+
+
+        getSmarty()->display('CalcView.html');
 	}
 }
 
