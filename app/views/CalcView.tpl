@@ -1,4 +1,4 @@
-{extends dirname(__FILE__)|cat:"/templates/main.html"}
+{extends dirname(__FILE__)|cat:"/templates/main.tpl"}
 
 {block name=footer}przykładowa tresć stopki wpisana do szablonu głównego z szablonu kalkulatora{/block}
 

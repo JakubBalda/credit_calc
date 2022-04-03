@@ -7,13 +7,13 @@ switch($action)
 {
 	default:
 		require_once $conf->root_path.'/app/controllers/CalcCtrl.class.php';
-		$calcCtrl = new CalcCtrl();
+		$calcCtrl = new app\controllers\CalcCtrl();
 		$calcCtrl->generateView();
 	break;
 
 	case 'calculated':
 		require_once $conf->root_path.'/app/controllers/CalcCtrl.class.php';
-		$calcCtrl = new CalcCtrl();
+		$calcCtrl = new app\controllers\CalcCtrl();
 		$calcCtrl->process();
 	break;
 }

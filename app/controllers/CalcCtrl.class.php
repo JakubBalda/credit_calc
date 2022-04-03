@@ -1,24 +1,26 @@
 <?php
-require_once 'CalcForm.class.php';
-require_once 'CalcRate.class.php';
+namespace app\controllers;
+
+use app\forms\CalcForm;
+use app\transfer\CalcRate;
 
 class CalcCtrl{
 
-    private $msgs;
+   
     private $form;
     private $rate;
 
     public function __construct(){
         $this->form = new CalcForm();
         $this->rate = new CalcRate();
-        $this->msgs = new Messeges();
+        
     }
 
     public function getParams(){
 
-        $this->form->kwota = isset($_REQUEST['kwota']) ? $_REQUEST['kwota'] : null;
-        $this->form->lata = isset($_REQUEST['lata']) ? $_REQUEST['lata'] : null;
-        $this->form->opr = isset($_REQUEST['opr']) ? $_REQUEST['opr'] : null;
+        $this->form->kwota = getFromRequest('kwota');
+        $this->form->lata = getFromRequest('lata');
+        $this->form->opr = getFromRequest('opr');
     }
 
     public function validate(){
@@ -26,29 +28,29 @@ class CalcCtrl{
 		    return false;
 
         if($this->form->kwota == ""){
-            $this->msgs->addError('Nie podano kwoty!!!');
+            getMesseges()->addError('Nie podano kwoty!!!');
         }
 
         if($this->form->lata == ""){
-            $this->msgs->addError('Nie podano lat!!!');
+            getMesseges()->addError('Nie podano lat!!!');
         }
 
-        if(!$this->msgs->isError()){
+        if(!getMesseges()->isError()){
             if (!is_numeric($this->form->kwota)) {
-                $this->msgs->addError('Kwota musi być liczbą!!!');
+                getMesseges()->addError('Kwota musi być liczbą!!!');
             }
             
             if (!is_numeric($this->form->lata)) {
-                $this->msgs->addError('Lata muszą być liczbą!!!');
+                getMesseges()->addError('Lata muszą być liczbą!!!');
                 
             }
             if($this->form->lata <= 0){
-                $this->msgs->addError('Lata nie mogą być liczbą ujemną!!!');
+                getMesseges()->addError('Lata nie mogą być liczbą ujemną lub zerem!!!');
             }
             if($this->form->kwota <=0){
-                $this->msgs->addError('Kwota nie może być liczbą ujemną!!!');
+                getMesseges()->addError('Kwota nie może być liczbą ujemną lub zerem!!!');
             }
-            return !$this->msgs->isError();
+            return !getMesseges()->isError();
             }
             
         }
@@ -88,10 +90,10 @@ class CalcCtrl{
 
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('rate',$this->rate);
-        getSmarty()->assign('msgs', $this->msgs);
+        
 
 
-        getSmarty()->display('CalcView.html');
+        getSmarty()->display('CalcView.tpl');
 	}
 }
 
