@@ -9,6 +9,6 @@
     {block name=content} Domyślna treść zawartości .... {/block}
     
     &copy: Wszelkie prawa zastrzeżone;
-    <a href="https://freshdesignweb.com/css-login-form-templates/" />Wygląd</a>
+    <a href="https://freshdesignweb.com/css-login-form-templates/" >Wygląd</a>
 </body>
 </html>

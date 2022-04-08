@@ -14,7 +14,7 @@ class ClassLoader {
     public function __construct() {
         spl_autoload_register(function($class) {
             $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-            $fileName = getConf()->root_path . DIRECTORY_SEPARATOR . $class . '.class.php';
+            $fileName = getConfig()->root_path . DIRECTORY_SEPARATOR . $class . '.class.php';
             if (is_readable($fileName)) {
                 require_once $fileName;
             }
@@ -28,7 +28,7 @@ class ClassLoader {
                 $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
                 foreach (getLoader()->paths as $path) {
 					$path = str_replace('\\', DIRECTORY_SEPARATOR, $path);
-                    $fileName = getConf()->root_path . $path . DIRECTORY_SEPARATOR . $class . '.class.php';
+                    $fileName = getConfig()->root_path . $path . DIRECTORY_SEPARATOR . $class . '.class.php';
                     if (is_readable($fileName)) {
                         require_once $fileName;
                     }

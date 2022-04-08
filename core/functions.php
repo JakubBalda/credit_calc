@@ -3,7 +3,7 @@ function getFrom(&$source,&$idx,&$required,&$required_message){
 	if (isset($source[$idx])){
 		return $source[$idx];
 	} else {
-		if ($required) getMessages()->addError($required_message);
+		if ($required) getMesseges()->addError($required_message);
 		return null;
 	}
 }
@@ -26,20 +26,20 @@ function getFromSession($param_name,$required=false,$required_message=null){
 
 function forwardTo($action_name){
 	getRouter()->setAction($action_name);
-	include getConf()->root_path."/ctrl.php";
+	include getConfig()->root_path."/ctrl.php";
 	exit;
 }
 
 function redirectTo($action_name){
-	header("Location: ".getConf()->action_url.$action_name);
+	header("Location: ".getConfig()->action_url.$action_name);
 	exit;
 }
 
 function addRole($role){
-	getConf()->roles [$role] = true;
-	$_SESSION['_roles'] = serialize(getConf()->roles);
+	getConfig()->roles [$role] = true;
+	$_SESSION['_roles'] = serialize(getConfig()->roles);
 }
 
 function inRole($role){
-	return isset(getConf()->roles[$role]);
+	return isset(getConfig()->roles[$role]);
 }
