@@ -25,7 +25,7 @@ function &getSmarty(){
 
         $smarty->setTemplateDir(array(
             'first' => getConfig()->root_path.'/app/views',
-            'second' => getConfig()->root_path.'/app/views/template'
+            'second' => getConfig()->root_path.'/app/views/templates'
         ));
     }
 

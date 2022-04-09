@@ -26,7 +26,7 @@ function getFromSession($param_name,$required=false,$required_message=null){
 
 function forwardTo($action_name){
 	getRouter()->setAction($action_name);
-	include getConfig()->root_path."/ctrl.php";
+	include getConfig()->root_path."/frontControl.php";
 	exit;
 }
 

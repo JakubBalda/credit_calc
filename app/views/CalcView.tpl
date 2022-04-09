@@ -1,4 +1,4 @@
-{extends dirname(__FILE__)|cat:"/templates/main.tpl"}
+{extends file="main.tpl"}
 
 {block name=footer}przykładowa tresć stopki wpisana do szablonu głównego z szablonu kalkulatora{/block}
 
@@ -39,15 +39,7 @@
             <div class="overlay-calc">
                 <div class="overlay-panel overlay-right">
                     
-                    {if $msgs->isError()}  
-                            Błędnie uzupełniony formularz!!! <br />
-                            {foreach $msgs->getErrors() as $msg} 
-                                {strip}
-                                    <li>{$msg}</li>
-                                {/strip}
-                            {/foreach}
-                        
-                    {/if}
+                    {include file="messeges.tpl"}
 
                     {if isset($rate->creditRate)}
                         Miesięczna rata: {$rate->creditRate|round:2} zł
@@ -57,5 +49,5 @@
             </div>
         </div>
     </div>
-    <a href="{$app_root}/app/security/logout.php" class="logout_button">Wyloguj się</a>
+    <a href="{$conf->action_url}logout" class="logout_button">Wyloguj się</a>
 {/block}

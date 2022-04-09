@@ -17,7 +17,6 @@ class CalcCtrl{
     }
 
     public function getParams(){
-
         $this->form->kwota = getFromRequest('kwota');
         $this->form->lata = getFromRequest('lata');
         $this->form->opr = getFromRequest('opr');
