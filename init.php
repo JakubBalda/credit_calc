@@ -48,7 +48,8 @@ function &getRouter(){
 }
 
 require_once 'core/functions.php';
-
-$action = getFromRequest('action');
+session_start();
+$conf->roles = isset($_SESSION['_roles']) ? unserialize($_SESSION['_roles']) : array();
+$router->setAction( getFromRequest('action') );
 
 

@@ -32,17 +32,18 @@ class LoginCtrl{
 
         if(!getMesseges()->isError()){
             if($this->form->login == 'Jakub' && $this->form->password == 'baldzik123'){
-                $user = new Users($this->form->login, 'admin');
+                $user = new Users('admin',$this->form->login);
                 $_SESSION['user'] = serialize($user);
                 addRole($user->role);
-            }
-
-            if($this->form->login == 'Michal' && $this->form->password == 'securitypassword123'){
-                $user = new Users($this->form->login, 'user');
+            }else if ($this->form->login == 'Michal' && $this->form->password == 'securitypassword123'){
+                $user = new Users('user',$this->form->login);
                 $_SESSION['user'] = serialize($user);
                 addRole($user->role);
+            }else {
+            getMesseges()->addError('Niepoprawny login lub hasło');
             }
         }
+        return !getMesseges()->isError();
     }
 
     public function action_login(){

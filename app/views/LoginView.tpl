@@ -16,7 +16,7 @@
                     </div>
                     </fieldset>
                     <div class="form__title-group">
-                        <button class="form__button">Zaloguj</button>
+                        <input type="submit" value="Zaloguj" class="form__button"/>
                     </div>
                 </form>
             </div>

@@ -6,7 +6,6 @@ use app\transfer\CalcRate;
 
 class CalcCtrl{
 
-   
     private $form;
     private $rate;
 
@@ -54,7 +53,7 @@ class CalcCtrl{
             
         }
 
-    public function process(){
+    public function action_calculated(){
 
         $this->getParams();
 
@@ -76,22 +75,25 @@ class CalcCtrl{
         $this->generateView();
     }
 
+    public function action_calcShow(){
+        $this->generateView();
+    }
+
     public function generateView(){
 		global $conf;
 		
         getSmarty()->assign('conf', $conf);
+
+        getSmarty()->assign('user',unserialize($_SESSION['user']));
 
         getSmarty()->assign('app_url',$conf->app_url);
         getSmarty()->assign('app_root', $conf->app_root);
         getSmarty()->assign('root_path',$conf->root_path);
         getSmarty()->assign('page_title','Kalkulator kredytowy');
 
-
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('rate',$this->rate);
         
-
-
         getSmarty()->display('CalcView.tpl');
 	}
 }

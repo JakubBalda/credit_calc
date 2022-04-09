@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-04-09 13:40:24
+/* Smarty version 4.1.0, created on 2022-04-09 15:01:37
   from 'E:\xampp\htdocs\credit_calc\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_625170a8213b90_84874528',
+  'unifunc' => 'content_625183b17b12e8_69260679',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '70e9d7e0b9cf14a0c7f10152a4d5e0b633d70010' => 
     array (
       0 => 'E:\\xampp\\htdocs\\credit_calc\\app\\views\\LoginView.tpl',
-      1 => 1649503803,
+      1 => 1649509294,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messeges.tpl' => 1,
   ),
 ),false)) {
-function content_625170a8213b90_84874528 (Smarty_Internal_Template $_smarty_tpl) {
+function content_625183b17b12e8_69260679 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php ob_start();
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_444706422625170a8206645_91911313', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_234805100625183b17a47d8_52869495', 'content');
 $_prefixVariable1 = ob_get_clean();
 echo $_prefixVariable1;
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'content'} */
-class Block_444706422625170a8206645_91911313 extends Smarty_Internal_Block
+class Block_234805100625183b17a47d8_52869495 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_444706422625170a8206645_91911313',
+    0 => 'Block_234805100625183b17a47d8_52869495',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -63,7 +63,7 @@ login" method="post" class="form" id="login">
                     </div>
                     </fieldset>
                     <div class="form__title-group">
-                        <button class="form__button">Zaloguj</button>
+                        <input type="submit" value="Zaloguj" class="form__button"/>
                     </div>
                 </form>
             </div>
