@@ -8,6 +8,9 @@ class Config{
 	public $app_url; 
 	public $action_root;
 	public $action_url;
+	public $db_user;
+	public $db_pass;
+	public $db_name;
 
 	public $login_action;
 	public $roles;

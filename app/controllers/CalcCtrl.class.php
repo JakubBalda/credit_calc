@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\forms\CalcForm;
 use app\transfer\CalcRate;
+use mysqli;
 
 class CalcCtrl{
 
@@ -53,8 +54,24 @@ class CalcCtrl{
             
         }
 
-    public function action_calculated(){
+    public function saveResults(){
+        global $conf;
 
+        $connect = new mysqli($conf->server_name, $conf->db_user, $conf->db_pass, $conf->db_name);
+
+        if($connect->connect_errno!=0){
+            print("Błąd");
+        }
+
+        $query = "INSERT INTO Results (Kwota, Lata, Opr, Rate) VALUES 
+                    (".$this->form->kwota.", ".$this->form->lata.", ".$this->form->opr.", ".$this->rate->creditRate.")";
+        $connect->query($query);
+        $connect->close();
+
+    }
+
+    public function action_calculated(){
+        
         $this->getParams();
 
         if($this->validate()){
@@ -71,7 +88,7 @@ class CalcCtrl{
                     /($this->form->lata*12);
             }
         }
-
+        $this->saveResults();
         $this->generateView();
     }
 
